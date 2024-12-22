@@ -18,3 +18,6 @@ This project involves scraping the episode titles of the 2024 season of "Seen & 
 3 **Extracting Episode Titles**
   results = soup.find(id='content')
   episode_title = results.find_all('h2', class_='entry-title')
+
+4 **Save outputs into a pandas DataFrame**
+  
