@@ -20,4 +20,7 @@ This project involves scraping the episode titles of the 2024 season of "Seen & 
   episode_title = results.find_all('h2', class_='entry-title')
 
 4 **Save outputs into a pandas DataFrame**
+  titles = [episode.text.strip() for episode in episode_title]
+  df = pd.DataFrame(titles, columns=["Episode Title"])
+  print(df)
   
