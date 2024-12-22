@@ -1,19 +1,21 @@
 # Seen-the-Unseen
 # Web Scraping: Episodes of "Seen & Unseen" (2024)
 
-![my banner](https://userimages.githubusercontent.com/75753187/123358567-aac7b900-d539-11eb-8275-0b380264bb4c.png)
-
 ## Project Overview
-This project aims to scrape the episode titles from the "Seen & Unseen" website for the year 2024 using **Python** and **BeautifulSoup**. The scraped data is then saved into a CSV file for future analysis or record-keeping.
+This project involves scraping the episode titles of the 2024 season of "Seen & Unseen" from the website using **Python** and **BeautifulSoup**. 
 
 ## Project Process
 
-1. **Fetching the Webpage Content**
-   - Use the `requests` library to download the HTML content of the target webpage.
+**Fetching the Webpage Content**
+import requests
+url = 'https://seenunseen.in/episodes/2024/'
+html = requests.get(url)
 
-   ```python
-   import requests
+**Parsing HTML Content with BeautifulSoup**
+from bs4 import BeautifulSoup
+soup = BeautifulSoup(html.content, 'html.parser')
 
-   url = "https://seenunseen.in/episodes/2024/"
-   response = requests.get(url)
-   html_content = response.text
+**Extracting Episode Titles**
+results = soup.find(id='content')
+episode_title = results.find_all('h2', class_='entry-title')
+episode_list = [episode.text.strip() for episode in episode_title] 
